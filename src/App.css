@@ -1,9 +1,14 @@
 @import url('./Components/Header/Header.css');
 @import url('./Components/Shop/Shop.css');
+@import url('./Components/Cart/Cart.css');
 :root{
   --orange:rgb(255 153 0);
 }
 *{
   margin: 0;
+  font-size: 17px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+p{
+  color: #2A414F;
 }

@@ -1,6 +1,6 @@
 .shopContainer{
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 .products{
     display: grid;
@@ -15,16 +15,13 @@
     padding: 7px;
     position: relative;
 }
-.productBody{
-    margin: 8px auto;
-    padding-left: 7px;
-}
 .product h6{
     font-size: 21px;
     margin-top: 7px;
 }
 .product img{
     border-radius: 8px;
+    width:100%;
 }
 .productFooter{
     background-color: #FFE0B3;

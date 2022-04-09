@@ -7,7 +7,7 @@ export default function Header() {
             <Link to='/'><img src={logo} alt="" /></Link>
             <ul>
                 <li><Link to="/order">Order</Link></li>
-                <li><Link to="/overeview">Order Review</Link></li>
+                <li><Link to="/overview">Order Review</Link></li>
                 <li><Link to="/inventory">Manage Inventory</Link></li>
             </ul>
         </nav>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteShoppingCart } from '../../Assets/utilities/fakedb';
+import { deleteShoppingCart } from '../../utilities/fakedb';
 
 export default function Cart(props) {
     let { cart } = props;
@@ -12,35 +12,58 @@ export default function Cart(props) {
         quantity = quantity + pd.quantity
     }
     let tax = total / 10;
+
     return (
+
+        // <div className="cart">
+        //     <h5 style={{ textAlign: 'center', fontSize: '25px' }}>Order Summery</h5>
+        //     <div className="cartInfo">
+        //         <p>Items In Cart:{quantity}</p>
+        //         <p>Total Price:${total}</p>
+        //         <p>Tax:${tax}</p>
+        //         <p>Shipping:${shipping}</p>
+        //         <p style={{
+        //             fontSize: '21px',
+        //             color: '#0E161A'
+        //         }}>Grand Total:${total + tax + shipping}
+        //         </p>
+        //     </div>
+        //     <div className="cartBtn">
+
+        //         <button
+        //             onClick={deleteShoppingCart}
+        //             className="clear">
+        //             <span style={{ marginRight: '5px' }}>Clear Cart</span>
+        //             <i className="bi bi-trash"></i>
+        //         </button>
+        //         <button className="review">
+        //             {props.children}
+        //             <i className="bi bi-arrow-right"></i>
+        //         </button>
+        //     </div>
+        // </div>
         <div className="cart">
-            <h5 style={{ textAlign: 'center', fontSize: '25px' }}>Order Summery</h5>
-            <div className="cartInfo">
+            <div className="sum">
+                <h1>Order Summary</h1>
                 <p>Items In Cart:{quantity}</p>
                 <p>Total Price:${total}</p>
                 <p>Tax:${tax}</p>
                 <p>Shipping:${shipping}</p>
-                <p style={{
-                    fontSize: '21px',
-                    color: '#0E161A'
-                }}>Grand Total:${total + tax + shipping}
-                </p>
-            </div>
-            <div className="cartBtn">
-                <button
-                    onClick={deleteShoppingCart}
-                    className="clear">
-                    <span style={{ marginRight: '5px' }}>Clear Cart</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
-                        <path d="M10.7188 16.25H11.6562C11.7806 16.25 11.8998 16.2006 11.9877 16.1127C12.0756 16.0248 12.125 15.9056 12.125 15.7812V7.34375C12.125 7.21943 12.0756 7.1002 11.9877 7.01229C11.8998 6.92439 11.7806 6.875 11.6562 6.875H10.7188C10.5944 6.875 10.4752 6.92439 10.3873 7.01229C10.2994 7.1002 10.25 7.21943 10.25 7.34375V15.7812C10.25 15.9056 10.2994 16.0248 10.3873 16.1127C10.4752 16.2006 10.5944 16.25 10.7188 16.25ZM17.125 3.125H13.9059L12.5777 0.910156C12.4111 0.632428 12.1753 0.402614 11.8934 0.243108C11.6115 0.0836025 11.293 -0.000154039 10.9691 2.12674e-07H7.03086C6.70709 -1.90925e-05 6.38883 0.0838016 6.10707 0.243301C5.82531 0.4028 5.58965 0.632542 5.42305 0.910156L4.09414 3.125H0.875C0.70924 3.125 0.550269 3.19085 0.433058 3.30806C0.315848 3.42527 0.25 3.58424 0.25 3.75L0.25 4.375C0.25 4.54076 0.315848 4.69973 0.433058 4.81694C0.550269 4.93415 0.70924 5 0.875 5H1.5V18.125C1.5 18.6223 1.69754 19.0992 2.04917 19.4508C2.40081 19.8025 2.87772 20 3.375 20H14.625C15.1223 20 15.5992 19.8025 15.9508 19.4508C16.3025 19.0992 16.5 18.6223 16.5 18.125V5H17.125C17.2908 5 17.4497 4.93415 17.5669 4.81694C17.6842 4.69973 17.75 4.54076 17.75 4.375V3.75C17.75 3.58424 17.6842 3.42527 17.5669 3.30806C17.4497 3.19085 17.2908 3.125 17.125 3.125ZM6.9625 1.98867C6.98339 1.9539 7.01294 1.92515 7.04827 1.90523C7.0836 1.8853 7.1235 1.87489 7.16406 1.875H10.8359C10.8764 1.87495 10.9162 1.8854 10.9515 1.90532C10.9868 1.92524 11.0163 1.95396 11.0371 1.98867L11.7191 3.125H6.28086L6.9625 1.98867ZM14.625 18.125H3.375V5H14.625V18.125ZM6.34375 16.25H7.28125C7.40557 16.25 7.5248 16.2006 7.61271 16.1127C7.70061 16.0248 7.75 15.9056 7.75 15.7812V7.34375C7.75 7.21943 7.70061 7.1002 7.61271 7.01229C7.5248 6.92439 7.40557 6.875 7.28125 6.875H6.34375C6.21943 6.875 6.1002 6.92439 6.01229 7.01229C5.92439 7.1002 5.875 7.21943 5.875 7.34375V15.7812C5.875 15.9056 5.92439 16.0248 6.01229 16.1127C6.1002 16.2006 6.21943 16.25 6.34375 16.25Z" fill="white" />
-                    </svg>
-                </button>
-                <button className="review">
-                    <span>Review Order</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                        <path d="M9.37889 1.85556L10.4524 0.782015C10.907 0.327453 11.642 0.327453 12.0918 0.782015L21.4925 10.1779C21.9471 10.6325 21.9471 11.3675 21.4925 11.8172L12.0918 21.218C11.6372 21.6725 10.9022 21.6725 10.4524 21.218L9.37889 20.1444C8.91949 19.685 8.92916 18.9355 9.39823 18.4858L15.2253 12.9343H1.32733C0.684175 12.9343 0.166748 12.4169 0.166748 11.7737V10.2263C0.166748 9.58312 0.684175 9.06569 1.32733 9.06569H15.2253L9.39823 3.51422C8.92433 3.0645 8.91466 2.31495 9.37889 1.85556Z" fill="white" />
-                    </svg>
-                </button>
+                <p><strong>Grand Total : ${total + tax + shipping}</strong></p>
+                <div className="buttons">
+                    <button
+                        onClick={deleteShoppingCart}
+                        className="clear">
+                        <span style={{ marginRight: '5px' }}>Clear Cart</span>
+                        <i className="bi bi-trash"></i>
+                    </button>
+
+
+                    {/* <button className="review"> */}
+                    {props.children}
+                    {/* </button> */}
+                </div>
+
             </div>
         </div>
     )

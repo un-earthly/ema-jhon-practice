@@ -1,10 +1,7 @@
 .cart{
-    background-color: rgba(255, 153, 0, 0.3);
     position: sticky;
     top: -5px;
-    height: 100vh;
     transition: 1s;
-    padding: 10px 20px;
 }
 .cartInfo{
     margin-top: 25px;

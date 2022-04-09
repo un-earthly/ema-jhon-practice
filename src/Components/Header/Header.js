@@ -9,6 +9,7 @@ export default function Header() {
                 <li><Link to="/order">Order</Link></li>
                 <li><Link to="/overview">Order Review</Link></li>
                 <li><Link to="/inventory">Manage Inventory</Link></li>
+                <li><Link to="/login">Login</Link></li>
             </ul>
         </nav>
     )

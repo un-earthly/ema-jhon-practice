@@ -12,11 +12,22 @@
 
 * {
   margin: 0;
-  font-size: 17px;
   font-family: 'Lato', sans-serif;
   box-sizing: border-box;
 }
 
+body {
+  font-size: 17px;
+}
+
+button {
+  cursor: pointer;
+}
+
 p {
   color: #2A414F;
+}
+
+.orange {
+  color: var(--orange);
 }

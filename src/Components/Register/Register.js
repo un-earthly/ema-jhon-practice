@@ -1,25 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom'
+import { auth } from '../../firebase.init';
 export default function Login() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     return (
+
+
         <div className='login__container'>
             <h1>Register</h1>
 
-            <form onSubmit=''>
+            <form onSubmit={e => e.preventDefault()}>
                 <div className="input__field">
                     <label htmlFor="email">Name</label>
-                    <input type="email" placeholder='email@email.com' id="email" required />
+                    <input type="email"
+                        onBlur={(e) => setEmail(e.target.value)}
+                        placeholder='email@email.com' id="email" />
                 </div>
                 <div className="input__field">
                     <label htmlFor="pass" >Password</label>
-                    <input type="password" placeholder='PassWord' id="pass" required />
+                    <input type="password"
+                        onBlur={(e) => setPassword(e.target.value)}
+                        placeholder='PassWord' id="pass" />
                 </div>
                 <div className="input__field">
                     <label htmlFor="pass-conf" >Password</label>
                     <input type="password" placeholder='PassWord' id="pass-conf" required />
                 </div>
-
-                <button className="btn">Login</button>
+                <div>
+                    {
+                        error && <p style={{ color: 'red' }}>Error: {error.message}</p>
+                    }
+                </div>
+                <button onClick={() => createUserWithEmailAndPassword(email, password)}>
+                    Register</button>
                 <small>
                     Already have an account? <Link to='/login' className='orange'>Login</Link>
                 </small>

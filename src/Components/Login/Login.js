@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import './login.css'
 
 import { auth } from '../../firebase.init'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 export default function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [
         signInWithEmailAndPassword,
-        user,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+
     return (
         <div className='login__container'>
             <h1>Login</h1>
@@ -52,7 +53,7 @@ export default function Login() {
                     <span className='horizontal__bar'></span>
 
                 </div>
-                <button><i className="bi bi-google"></i> Continue with Google</button>
+                <button onClick={() => signInWithGoogle()}><i className="bi bi-google"></i> Continue with Google</button>
             </div>
         </div >
     )

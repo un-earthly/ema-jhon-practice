@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase.init';
 export default function Login() {
@@ -8,10 +8,10 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    const [signInWithGoogle, user, loading, googleError] = useSignInWithGoogle(auth);
     return (
 
 
@@ -56,8 +56,8 @@ export default function Login() {
                     <span className='horizontal__bar'></span>
 
                 </div>
-                <button><i class="bi bi-google"></i> Continue with Google</button>
+                <button onClick={() => signInWithGoogle()}><i class="bi bi-google"></i> Continue with Google</button>
             </div>
         </div>
-    )
+    )   
 }

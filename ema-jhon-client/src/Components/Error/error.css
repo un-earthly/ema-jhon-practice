@@ -1,0 +1,16 @@
+.error__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    overflow: hidden;
+    font-size: 62px;
+    font-weight: 300;
+}
+
+.vartiacal__bar {
+    background: var(--orange);
+    height: 62px;
+    width: 2px;
+    margin: 0 20px;
+}

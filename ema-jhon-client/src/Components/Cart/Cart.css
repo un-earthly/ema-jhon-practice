@@ -1,0 +1,28 @@
+.cart{
+    position: sticky;
+    top: -5px;
+    transition: 1s;
+}
+.cartInfo{
+    margin-top: 25px;
+}
+.cartInfo p{
+    margin-top: 25px;
+}
+.cartBtn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 4px;
+    padding: 10px 0;
+    border: none;
+    color: white;
+}
+.clear{
+    background-color: #FF3030;
+}
+.review{
+    background-color:#FF9900;
+}

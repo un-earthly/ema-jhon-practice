@@ -1,0 +1,81 @@
+.login__container {
+    width: 500px;
+    margin: 130px auto;
+    text-align: center;
+    border-radius: 8px;
+    padding: 40px;
+    border: 1px solid #95A0A7;
+    box-shadow: #FFE0B3 -10px 10px 0;
+}
+
+form {
+    text-align: left;
+
+}
+
+.login__container button {
+    border: none;
+    border-radius: 5px;
+    font-size: 21px;
+    padding: 15px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(255, 153, 0, 0.3);
+    margin-top: 20px;
+}
+
+small {
+    display: block;
+    margin: 10px;
+    text-align: center;
+}
+
+
+.or {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #95A0A7;
+    margin: 20px 0;
+}
+
+
+.or__section button {
+    border: 1px solid #95A0A7;
+    transition: .5s;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px 80px;
+}
+
+
+.horizontal__bar {
+    background: #95A0A7;
+    width: 145px;
+    height: 1px;
+    margin: 0 26px;
+}
+
+.input__field {
+    width: 415px;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.input__field input {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #95A0A7;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.input__field label {
+    padding: 10px;
+}

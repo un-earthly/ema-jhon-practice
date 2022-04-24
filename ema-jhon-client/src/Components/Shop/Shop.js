@@ -3,6 +3,7 @@ import { addToDb, getStoragItem } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from './Product';
 import { Link } from 'react-router-dom';
+import useCart from '../../customHooks/useCart';
 
 export default function Shop() {
     const [products, setProducts] = useState([])
@@ -10,7 +11,7 @@ export default function Shop() {
     const [pageCount, setPageCount] = useState(0)
     const [productPerPage, setProductPerPage] = useState(10)
     const [activePage, setActivePage] = useState(0)
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart();
     useEffect(() => {
         fetch(`http://localhost/product?activePage=${activePage}&productPerPage=${productPerPage}`)
             .then(res => res.json())
@@ -28,19 +29,6 @@ export default function Shop() {
             .then(data => setProducts(data))
     }, [])
 
-    useEffect(() => {
-        const getProducts = getStoragItem();
-        const savedProducts = [];
-        for (const _id in getProducts) {
-            const storageProduct = products.find((product) => product._id === _id)
-            if (storageProduct) {
-                const quantity = getProducts[_id]
-                storageProduct.quantity = quantity;
-                savedProducts.push(storageProduct)
-            }
-        }
-        setCart(savedProducts)
-    }, [products])
     const cartHandler = (product) => {
         const exist = cart.find(pd => product._id === pd._id)
         let newCart = [];

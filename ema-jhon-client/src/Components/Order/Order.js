@@ -1,5 +1,4 @@
 import React from 'react'
-import useProduct from '../../customHooks/useProduct'
 import useCart from '../../customHooks/useCart'
 import Product from '../Cart/Product'
 import { removeFromDb } from '../../utilities/fakedb'
@@ -7,11 +6,9 @@ import Cart from '../Cart/Cart'
 import { Link } from 'react-router-dom'
 
 export default function Order() {
-  const [products] = useProduct()
-  const [cart, setCart] = useCart(products)
+  const [cart, setCart] = useCart()
 
   const deleteHandler = product => {
-    console.log(product)
 
     const rest = cart.filter(pd => pd._id !== product._id)
 

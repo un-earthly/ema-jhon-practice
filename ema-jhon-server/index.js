@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors"
 import dotenv from 'dotenv'
-import mongodb from 'mongodb'
+import mongodb, { ObjectId } from 'mongodb'
 const app = express();
 const port = 80;
 
@@ -46,7 +46,11 @@ async function run() {
             res.send({ 'productCount': count })
         })
 
-
+        // productsById
+        app.post('/productsById', async (req, res) => {
+            const products = await productCollection.find({ _id: { $in: req.body.map(id => ObjectId(id)) } }).toArray()
+            res.send(products)
+        })
     }
     finally {
 

@@ -7,16 +7,16 @@ import Cart from '../Cart/Cart'
 import { Link } from 'react-router-dom'
 
 export default function Order() {
-  const [products, setProducts] = useProduct()
+  const [products] = useProduct()
   const [cart, setCart] = useCart(products)
 
   const deleteHandler = product => {
     console.log(product)
 
-    const rest = cart.filter(pd => pd.id !== product.id)
+    const rest = cart.filter(pd => pd._id !== product._id)
 
     setCart(rest)
-    removeFromDb(product.id)
+    removeFromDb(product._id)
   }
   return (
     <div>

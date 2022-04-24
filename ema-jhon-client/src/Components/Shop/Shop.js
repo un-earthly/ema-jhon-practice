@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { addToDb, getStoragItem } from '../../utilities/fakedb';
-import useProduct from '../../customHooks/useProduct';
 import Cart from '../Cart/Cart';
 import Product from './Product';
 import { Link } from 'react-router-dom';
 
 export default function Shop() {
-    const [products, setProducts] = useProduct()
+    const [products, setProducts] = useState([])
+
+    const [pageCount, setPageCount] = useState(0)
+    const [productPerPage, setProductPerPage] = useState(10)
+    const [activePage, setActivePage] = useState(0)
     const [cart, setCart] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost/product?activePage=${activePage}&productPerPage=${productPerPage}`)
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [activePage, productPerPage])
+    useEffect(() => {
+        fetch('http://localhost/productCount')
+            .then(res => res.json())
+            .then(data => setPageCount(Math.ceil(parseInt(data.productCount) / parseInt(productPerPage))))
+    }, [productPerPage])
+
     useEffect(() => {
         fetch('products.json')
             .then(res => res.json())
@@ -17,10 +31,10 @@ export default function Shop() {
     useEffect(() => {
         const getProducts = getStoragItem();
         const savedProducts = [];
-        for (const id in getProducts) {
-            const storageProduct = products.find((product) => product.id === id)
+        for (const _id in getProducts) {
+            const storageProduct = products.find((product) => product._id === _id)
             if (storageProduct) {
-                const quantity = getProducts[id]
+                const quantity = getProducts[_id]
                 storageProduct.quantity = quantity;
                 savedProducts.push(storageProduct)
             }
@@ -28,29 +42,29 @@ export default function Shop() {
         setCart(savedProducts)
     }, [products])
     const cartHandler = (product) => {
-        const exist = cart.find(pd => product.id === pd.id)
+        const exist = cart.find(pd => product._id === pd._id)
         let newCart = [];
         if (!exist) {
             product.quantity = 1;
             newCart.push(...cart, product)
         }
         else {
-            const rest = cart.filter(pd => pd.id !== product.id)
+            const rest = cart.filter(pd => pd._id !== product._id)
             exist.quantity = exist.quantity + 1;
             console.log(exist)
             newCart = [...rest, exist]
         }
 
         setCart(newCart)
-        addToDb(product.id)
+        addToDb(product._id)
     }
-    return (
+    return (<>
         <div className='shopContainer'>
             <div className="products">
                 {
                     products.map(product =>
                         <Product
-                            key={product.id}
+                            key={product._id}
                             product={product}
                             handler={cartHandler}
                         />
@@ -71,5 +85,19 @@ export default function Shop() {
                 </Cart>
             </div>
         </div>
+        <div style={{ 'textAlign': 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '10px' }}>
+            <div>
+                {[...Array(pageCount).keys()].map(num => <button onClick={() => setActivePage(num)} className={activePage === num ? 'selected' : ''} style={{ margin: '0 4px' }}>{num + 1}</button>)}
+            </div>
+            < select onChange={e => setProductPerPage(e.target.value)}>
+
+                <option >5 product per page</option>
+                <option selected >10 product per page</option>
+                <option >15 product per page</option>
+                <option >20 product per page</option>
+            </select>
+        </div>
+    </>
+
     )
 }

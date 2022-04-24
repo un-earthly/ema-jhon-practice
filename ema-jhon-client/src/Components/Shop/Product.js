@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Product(props) {
-    const { id, img, category, name, price, ratings, ratingsCount, seller, shipping, stock } = props.product
+    const { img, name, price, ratings, seller, } = props.product
     return (
         <div className="product">
             <div className="productBody">

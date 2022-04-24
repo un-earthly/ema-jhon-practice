@@ -9,10 +9,10 @@ export default function useCart(products) {
         const storedCart = getStoragItem();
         // 
         const savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(pd => pd.id === id);
+        for (const _id in storedCart) {
+            const addedProduct = products.find(pd => pd._id === _id);
             if (addedProduct) {
-                addedProduct.quantity = storedCart[id];
+                addedProduct.quantity = storedCart[_id];
                 savedCart.push(addedProduct)
             }
         }
